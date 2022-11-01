@@ -1,24 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { JobList } from './Components/JobList/JobList';
+import {Routes, Route, Navigate} from 'react-router-dom';
+import { JobDetailed } from './Components/JobDetailed/JobDetailed';
 
 function App() {
+  const [jobs, setJobs] = React.useState([]);
+  const [savedJob, setSavedJob] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch('https://api.json-generator.com/templates/ZM1r0eic3XEy/data?access_token=wm3gg940gy0xek1ld98uaizhz83c6rh2sir9f9fu')
+      .then(response => {
+        response.json()
+          .then(res => {
+            setJobs(res);
+          })
+      })
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/jobs" element={
+          <JobList jobs={jobs} savedJob={savedJob} setSavedJob={setSavedJob}/>
+        }>
+        </Route>
+        <Route path="/" element={
+          <Navigate replace to="/jobs" />
+        }>
+        </Route>
+        <Route path='/jobs/:id' element={
+          <JobDetailed jobs={jobs} savedJob={savedJob} setSavedJob={setSavedJob}/>
+        }>
+
+        </Route>
+      </Routes>
     </div>
   );
 }
