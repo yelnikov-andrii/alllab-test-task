@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/alllab-test-task/static/css/main.e4fa16e4.css",
+    "main.js": "/alllab-test-task/static/js/main.8a43d20e.js",
+    "index.html": "/alllab-test-task/index.html",
+    "main.e4fa16e4.css.map": "/alllab-test-task/static/css/main.e4fa16e4.css.map",
+    "main.8a43d20e.js.map": "/alllab-test-task/static/js/main.8a43d20e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e4fa16e4.css",
+    "static/js/main.8a43d20e.js"
+  ]
+}
